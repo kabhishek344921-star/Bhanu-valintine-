@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffb6c1; /* Light pink */
+            color: #ffffff; /* White */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #yes {
+            background-color: #ff69b4; /* Hot pink */
+            color: white;
+        }
+        #yes:hover {
+            background-color: #ff1493; /* Deeper pink */
+        }
+        #no {
+            background-color: #ff69b4; /* Hot pink */
+            color: white;
+            position: relative;
+        }
+        #no:hover {
+            background-color: #ff1493; /* Deeper pink */
+        }
+        .meme {
+            display: none;
+            margin-top: 20px;
+        }
+        .meme img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will You Be My Valentine?</h1>
+    <div class="buttons">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
+    <div class="meme">
+        <img src="https://i.imgur.com/4M7o9wJ.jpg" alt="Good choice meme" />
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+        const memeDiv = document.querySelector('.meme');
+
+        // Function to move the No button randomly on hover
+        noButton.addEventListener('mouseover', () => {
+            const maxX = window.innerWidth - noButton.offsetWidth;
+            const maxY = window.innerHeight - noButton.offsetHeight;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            noButton.style.position = 'absolute';
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+        });
+
+        // When Yes is clicked, show the meme
+        yesButton.addEventListener('click', () => {
+            document.querySelector('.buttons').style.display = 'none';
+            memeDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
